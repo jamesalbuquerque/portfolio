@@ -1,5 +1,7 @@
 /* Hero logo: traced once with a Figma-style pen tool, each part filling as its path closes. */
 (function () {
+  try { run(); } catch (e) { [].forEach.call(document.querySelectorAll('#heroMark path'), function (p) { p.style.fillOpacity = ''; }); }
+  function run() {
   var svg = document.getElementById('heroMark');
   if (!svg || !svg.getScreenCTM || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var NS = 'http://www.w3.org/2000/svg';
@@ -97,4 +99,5 @@
   }
   render(0);
   requestAnimationFrame(frame);
+}
 })();

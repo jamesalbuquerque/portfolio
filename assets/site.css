@@ -237,3 +237,5 @@ a.count { text-decoration: underline; text-underline-offset: 4px; text-decoratio
   .stage svg, .stage path, .stage-hero .glow { animation: none !important; }
   .stage svg { transform: rotateY(-12deg) rotateX(5deg); }
 }
+
+.arr { width: .62em; height: .62em; display: inline-block; vertical-align: .06em; margin-left: .2em; }
