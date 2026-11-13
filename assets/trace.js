@@ -67,12 +67,13 @@
     });
     var showH = false;
     if (active && t < active.t1) {
-      var s = active.segs.filter(function (s) { return active.drawn >= s.a && active.drawn <= s.b; })[0];
-      if (s && s.c1) {
+      var done = active.segs.filter(function (s) { return s.b <= active.drawn + .01; }), s = done[done.length - 1];
+      if (s && s.c2) {
         showH = true;
-        set(h1, { x1: s.from[0], y1: s.from[1], x2: s.c1[0], y2: s.c1[1], 'stroke-width': k });
-        set(h2, { x1: s.to[0], y1: s.to[1], x2: s.c2[0], y2: s.c2[1], 'stroke-width': k });
-        set(k1, { cx: s.c1[0], cy: s.c1[1], r: R, 'stroke-width': k }); set(k2, { cx: s.c2[0], cy: s.c2[1], r: R, 'stroke-width': k });
+        var to = s.to, c = s.c2, mir = [2 * to[0] - c[0], 2 * to[1] - c[1]];
+        set(h1, { x1: to[0], y1: to[1], x2: c[0], y2: c[1], 'stroke-width': k });
+        set(h2, { x1: to[0], y1: to[1], x2: mir[0], y2: mir[1], 'stroke-width': k });
+        set(k1, { cx: c[0], cy: c[1], r: R, 'stroke-width': k }); set(k2, { cx: mir[0], cy: mir[1], r: R, 'stroke-width': k });
       }
     }
     [h1, h2, k1, k2].forEach(function (e) { e.style.opacity = showH ? 1 : 0; });
