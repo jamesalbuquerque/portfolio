@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=05ca6ed">
+<link rel="stylesheet" href="assets/site.css?v=trace1">
 </head>
 <body>
 
@@ -218,9 +218,10 @@
     if (!('IntersectionObserver' in window)) return;
     nav.classList.add('on-dark');
     new IntersectionObserver(function (e) { nav.classList.toggle('on-dark', e[0].isIntersecting); }, { rootMargin: '-84px 0px 0px 0px' }).observe(hero);
-    // Pause the logo loop while it's off screen.
+    // Pause the stage's float and glow while it's off screen.
     new IntersectionObserver(function (e) { hero.classList.toggle('paused', !e[0].isIntersecting); }).observe(hero);
   })();
 </script>
+<script src="assets/trace.js?v=trace1"></script>
 </body>
 </html>

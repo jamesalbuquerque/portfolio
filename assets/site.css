@@ -216,23 +216,15 @@ a.count { text-decoration: underline; text-underline-offset: 4px; text-decoratio
 .stage svg { width: 100%; height: auto; overflow: visible; transform-style: preserve-3d; animation: float 9s ease-in-out infinite alternate; filter: drop-shadow(0 40px 40px rgba(0, 0, 0, .55)); }
 @keyframes float { from { transform: rotateY(-20deg) rotateX(8deg) translateY(0); } to { transform: rotateY(-6deg) rotateX(3deg) translateY(-14px); } }
 .stage path { transform-box: fill-box; }
-.r-stem { fill: #8C847C; animation: rise 1s cubic-bezier(.2,.8,.2,1) .15s both; }
-.r-bowl { fill: #3A3633; transform-origin: 100% 0%; animation: loop-bowl 9s linear .6s infinite both; }
-.r-wedge { fill: #E9E4DC; transform-origin: 0% 100%; animation: loop-wedge 9s linear .6s infinite both; }
-/* One 9 s cycle: the J piece glides in from the lower left, then the A piece from the upper right,
-   each keeping a clear gap from the stem until it settles; hold; they drift back out the same way. */
-@keyframes loop-bowl {
-  0% { transform: translate(-48%, 24%) rotate(-12deg); opacity: 0; animation-timing-function: cubic-bezier(.33,1,.68,1); }
-  14%, 76% { transform: none; opacity: 1; animation-timing-function: cubic-bezier(.32,0,.67,0); }
-  90%, 100% { transform: translate(-48%, 24%) rotate(-12deg); opacity: 0; }
-}
-@keyframes loop-wedge {
-  0%, 5% { transform: translate(34%, -26%) rotate(10deg); opacity: 0; animation-timing-function: cubic-bezier(.33,1,.68,1); }
-  20%, 71% { transform: none; opacity: 1; animation-timing-function: cubic-bezier(.32,0,.67,0); }
-  85%, 100% { transform: translate(34%, -26%) rotate(10deg); opacity: 0; }
-}
-
-.stage-hero.paused .stage svg, .stage-hero.paused path, .stage-hero.paused .glow { animation-play-state: paused; }
+.r-stem { fill: #8C847C; } .r-bowl { fill: #3A3633; } .r-wedge { fill: #E9E4DC; }
+/* Pen-tool trace (assets/trace.js): guides drawn in Figma selection blue over the dark stage. */
+.stage .guide { fill: none; stroke: #0D99FF; stroke-linejoin: round; stroke-linecap: round; }
+.stage .anchor { fill: #0D0C0B; stroke: #0D99FF; }
+.stage .handle { stroke: #0D99FF; }
+.stage .knob { fill: #0D0C0B; stroke: #0D99FF; }
+.stage .sel-label { fill: #fff; font-family: "Instrument Sans", Arial, sans-serif; font-weight: 500; }
+.stage .sel-tag { fill: #0D99FF; }
+.stage-hero.paused .stage svg, .stage-hero.paused .glow { animation-play-state: paused; }
 .scroll-cue { position: absolute; right: var(--pad); bottom: 32px; display: flex; align-items: center; gap: 12px; font-size: 13px; color: #A39C95; text-decoration: none; }
 .scroll-cue::after { content: ""; width: 56px; height: 1px; background: #5A544F; }
 .scroll-cue:hover { color: var(--paper); }
