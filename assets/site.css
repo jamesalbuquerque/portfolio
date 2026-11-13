@@ -125,7 +125,7 @@ h2 { font-size: clamp(32px, 4vw, 48px); }
 .foot .lockup { font-size: 13px; font-weight: 400; letter-spacing: 0; gap: 10px; }
 .foot .lockup svg { height: 18px; }
 :focus-visible { outline: 2px solid var(--graphite); outline-offset: 3px; border-radius: 4px; }
-.how :focus-visible, .contact :focus-visible { outline-color: var(--paper); }
+.how :focus-visible, .contact :focus-visible, .stage-hero :focus-visible, .nav.on-dark :focus-visible { outline-color: var(--paper); }
 
 /* ---------- Case study pages ---------- */
 .case-head .wrap { padding-top: clamp(40px, 6vw, 88px); padding-bottom: clamp(40px, 5vw, 64px); }
@@ -195,3 +195,51 @@ h2 { font-size: clamp(32px, 4vw, 48px); }
 a.count { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--sand); }
 @media (max-width: 1000px) { .arch-grid { grid-template-columns: repeat(2, 1fr); } }
 .arch .cover img { color: transparent; }
+
+/* ---------- Hero B: Ribbon Stage ---------- */
+.nav { transition: background-color .35s ease, color .35s ease; }
+.nav.on-dark { background: #0D0C0B; color: var(--paper); }
+.nav.on-dark .btn.dark { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.stage-hero { position: relative; overflow: hidden; background: #0D0C0B; color: var(--paper); }
+.stage-hero .glow { position: absolute; width: min(1100px, 120vw); aspect-ratio: 1; right: -18%; top: -30%; border-radius: 50%; background: radial-gradient(closest-side, rgba(200, 191, 180, .2), rgba(200, 191, 180, 0)); animation: drift 14s ease-in-out infinite alternate; pointer-events: none; }
+@keyframes drift { to { transform: translate(-8%, 10%); } }
+.stage-hero .wrap { position: relative; display: grid; grid-template-columns: 1fr 1.15fr; align-items: center; gap: 32px; min-height: min(86vh, 860px); padding-top: 40px; padding-bottom: 96px; }
+.stage-hero .eyebrow { color: #A39C95; }
+.stage-hero h1 { font-size: clamp(56px, 8.2vw, 124px); line-height: .94; letter-spacing: -0.045em; margin: 0; }
+.stage-hero .lede { color: #C9C3BC; margin: 28px 0 0; }
+.stage-hero .hero-cta { margin-top: 36px; }
+.btn.light { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.btn.light:hover { background: var(--sand); border-color: var(--sand); }
+.btn.outline { color: var(--paper); border-color: #5A544F; }
+.btn.outline:hover { border-color: var(--paper); }
+.stage { perspective: 1400px; }
+.stage svg { width: 100%; height: auto; overflow: visible; transform-style: preserve-3d; animation: float 9s ease-in-out infinite alternate; filter: drop-shadow(0 40px 40px rgba(0, 0, 0, .55)); }
+@keyframes float { from { transform: rotateY(-20deg) rotateX(8deg) translateY(0); } to { transform: rotateY(-6deg) rotateX(3deg) translateY(-14px); } }
+.stage path { transform-box: fill-box; }
+.r-stem { fill: #8C847C; animation: rise 1s cubic-bezier(.2,.8,.2,1) .15s both; }
+.r-bowl { fill: #3A3633; transform-origin: 100% 50%; animation: loop-bowl 9s cubic-bezier(.45,0,.2,1) .6s infinite both; }
+.r-wedge { fill: #E9E4DC; transform-origin: 0% 50%; animation: loop-wedge 9s cubic-bezier(.45,0,.2,1) .6s infinite both; }
+/* One 9 s cycle: J unfolds, then A; hold; A folds back, then J; short rest folded. */
+@keyframes loop-bowl {
+  0% { transform: scaleX(0); opacity: .5; }
+  10%, 78% { transform: scaleX(1); opacity: 1; }
+  92%, 100% { transform: scaleX(0); opacity: .5; }
+}
+@keyframes loop-wedge {
+  0%, 4% { transform: scaleX(0); opacity: .5; }
+  15%, 72% { transform: scaleX(1); opacity: 1; }
+  86%, 100% { transform: scaleX(0); opacity: .5; }
+}
+.stage-hero.paused .stage svg, .stage-hero.paused path, .stage-hero.paused .glow { animation-play-state: paused; }
+.scroll-cue { position: absolute; right: var(--pad); bottom: 32px; display: flex; align-items: center; gap: 12px; font-size: 13px; color: #A39C95; text-decoration: none; }
+.scroll-cue::after { content: ""; width: 56px; height: 1px; background: #5A544F; }
+.scroll-cue:hover { color: var(--paper); }
+@media (max-width: 860px) {
+  .stage-hero .wrap { grid-template-columns: 1fr; min-height: 0; padding-top: 24px; padding-bottom: 88px; gap: 8px; }
+  .stage { order: -1; max-width: 520px; width: 100%; justify-self: center; }
+  .scroll-cue { left: var(--pad); right: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage svg, .stage path, .stage-hero .glow { animation: none !important; }
+  .stage svg { transform: rotateY(-12deg) rotateX(5deg); }
+}
